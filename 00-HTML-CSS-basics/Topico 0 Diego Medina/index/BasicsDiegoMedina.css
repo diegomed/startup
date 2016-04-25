@@ -1,0 +1,113 @@
+* {
+  font-family: "arial",Georgia, Serif;
+  font-size: 14px;
+}
+body {
+  background-color: black;
+}
+
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+p {
+  text-align: center;
+}
+
+.header {
+  font-size: 46px;
+}
+
+.footer {
+  font-size: 10px;
+}
+
+.content {
+  font-size: 14px;
+}
+
+.navigation {
+  font-size: 12px;
+}
+
+.sidebar {
+  font-size: 10px;
+}
+
+*[class$="r"] {
+  background-color: magenta; 
+}
+
+*[class*="a"]:not(*[class$="r"]) {
+  background-color: blue;
+}
+
+#header {
+  margin:0px auto 15px auto;
+  border-radius:5px;
+  width:100%;
+  height:82px;
+  position:relative;
+  /*background-color: blue;*/
+}
+
+#nav {
+  margin:0px auto 0px 15px;
+  width:125px;
+  height:530px;
+  border-radius:5px;
+  float:left;
+  /*background-color: green;*/
+}
+#section {
+  margin:0px auto 0px auto;
+  border-radius:5px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  min-height: 500px;
+  width:1000px;
+  height:82px;
+  background-color: purple;
+}
+#aside {
+  margin:0px 15px 0px auto;
+  border-radius:5px;
+  float:right;
+  width:125px;
+  height:530px;
+  /*background-color: red;*/
+}
+#footer {
+  border-radius:5px;
+  margin: 0px auto;
+  padding-bottom: 20px;
+  width: 100%;
+  height:100px;
+  position: relative;
+  /*background-color: lightblue;*/
+}
+
+#article {
+  margin:0px auto 0px auto;
+  border-radius:5px;
+  width:960px;
+  height:250px;
+  position:relative;
+  background-color: yellow;
+}
+#sheader {
+  margin:0px auto 15px auto;
+  border-radius:5px;
+  width:960px;
+  height:82px;
+  position:relative;
+  background-color: blue;
+}
+#sfooter {
+  border-radius:5px;
+  margin: 0px auto;
+  padding-bottom: 20px;
+  width: 960px;
+  height:100px;
+  position: relative;
+  background-color: lightblue;
+}
