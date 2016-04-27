@@ -1,0 +1,94 @@
+* {
+  text-align: center;
+}
+p {
+  text-align: justify;
+}
+header {
+  background-color: lightblue;
+  height: 100px;
+  width: 100%;
+  padding: 0px;
+  border: 0px;
+  margin: auto;
+  display: inline-block;
+}
+header div {
+  display: inline-block;
+  background-color: pink;
+  padding: 2px;
+  /*border: 1px solid black;*/
+  margin: auto;
+  float: left;
+}
+header div:hover {
+  background-color: grey;
+}
+.headerNav {
+  width: 230px;
+  /*border: 1px solid black;*/
+  margin: 44px 100px;
+}
+section {
+  background-color: white;
+  height: 500px;
+  width: 100%;
+  padding: 0px;
+  border: 0px;
+  margin: auto;
+  display: inline-block;
+  overflow: auto;
+}
+.info {
+  width: 60%;
+  height: 92%;
+  float: left;
+  margin: 1px;
+  padding: 20px;
+}
+h1 {
+  text-align: left;
+}
+.descripcion {
+  overflow: auto;
+}
+.trailer {
+  height: 44%;
+}
+video {
+  margin-top: 2%;
+  float: left;
+}
+img {
+  float: left;
+}
+.cover {
+  width: 35%;
+  height: 100%;
+  float: left;
+}
+.portada {
+  margin: 20% 10%;
+}
+footer {
+  background-color: blue;
+  height: 150px;
+  width: 100%;
+  padding: 0px;
+  border: 0px;
+  margin: auto;
+  display: inline-block;
+}
+footer div {
+  border: 1px solid black;
+  float: left;
+  height: 100px;
+  width: 200px;
+  padding: 0px;
+  margin: 30px;
+  color: white;
+}
+.footerNav {
+  border: 0px;
+  text-align: left;
+}
