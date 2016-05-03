@@ -49,6 +49,21 @@ $(function() {
         return lastReleases;
     }
     /*-----------ESTO ES MAS OPTIMO--------*/
+    //PUNTO 2 filtra (all, popular, recent)
+    function filter(JSON,filtro) {
+        if (filtro == 'all') {
+            return JSON;
+        }
+        else if (filtro == 'recent') {
+            return JSON.sort(function(a, b){return Number(b.year)-Number(a.year)}); // ordeno por año de estreno
+        }
+        else if (filtro == 'popular') {
+            return JSON.sort(function(a, b){return Number(b.rating)-Number(a.rating)}); // ordeno por rating
+        }
+        else {
+            return -1;
+        }
+    }
     //PUNTO 3 devuelve todos los generos de las peliculas existentes
     function movieGenres(JSON) {
         var genres = new Array(JSON[0].genre);
