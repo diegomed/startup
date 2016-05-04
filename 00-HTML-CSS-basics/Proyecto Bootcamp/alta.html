@@ -3,7 +3,7 @@
 	<head>
 		<title>portada</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="portada.css">
+		<link rel="stylesheet" type="text/css" href="alta.css">
 	</head>
 	<body>
 		<header>
@@ -47,8 +47,43 @@
 		    </ul>
 		  </div>
 		</footer>
-		<div class="alta">
-			alta
+		<div class="opaco">
+			<div class="alta">
+				<header class="headerAlta">
+				  <h2>Nueva pelicula</h2>
+				</header>
+				<section class="sectionAlta">
+					<form>
+						<div class="input">
+							<div class="inputLeft">
+								Titulo: <input type="text">
+							</div>
+							<div class="inputRight">
+								Fecha de estreno: <input type="date">
+							</div>
+						</div>
+						<div class="input">
+							<div class="inputLeft">
+								categoria: 
+								<select>
+								    <option value="comedy">comedy</option>
+								    <option value="drama">drama</option>
+								    <option value="horror">horror</option>
+								</select>
+							</div>
+							<div class="inputRight">
+								puntaje: <input type="range" min="0" max="5" value="0">
+							</div>
+						</div>
+						<div class="input">
+							Descripcion: <br>
+							<textarea name="description" rows="5" cols="50"></textarea>
+						</div>
+						<button type="submit">ok</button>
+						<button type="reset">cancel</button>
+					</form>
+				</section>
+			</div>
 		</div>
 	</body>
 </html>

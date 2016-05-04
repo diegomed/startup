@@ -80,7 +80,57 @@ footer div {
   text-align: left;
 }
 .alta {
-  background-color: yellow;
+  background-color: lightgreen;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
   position: fixed;
-  z-index: 10;
+  z-index: 1;
+}
+.opaco {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.input {
+  display: block;
+  float: left;
+  margin: 10px 0px;
+  height: 120px;
+  width: 100%;
+  border: none;
+  background-color: lightgreen;
+}
+.headerAlta {
+  background-color: lightblue;
+  float: left;
+  width: 100%;
+  height: 50px;
+}
+.sectionAlta {
+  background-color: lightgreen;
+}
+.inputLeft {
+  margin: 30px 20px;
+  height: 50%;
+  width: 43%;
+  float: left;
+  border: none;
+  background-color: lightgreen;
+}
+.inputRight {
+  margin: 30px 20px;
+  height: 50%;
+  width: 43%;
+  float: right;
+  border: none;
+  background-color: lightgreen;
+}
+button {
+  float: right;
+  margin: 0px 20px;
 }
