@@ -90,4 +90,30 @@ $(function() {
         }
         return resultado;
     }
+    //PUNTO 5 retorna lo ingresado en el formulario alta de pelicula
+    function getMovie() {
+        var form = document.getElementById("myForm");
+        var elem = form.elements;
+        var title = elem[0].value;
+        var date = elem[1].value;
+        var select = elem[2];
+        var index = select.selectedIndex;
+        var selectedOne = select[index].value;
+        var score = elem[3].value;
+        var description = elem[4].value;
+
+        var movie = {
+            title: title,
+            date: date,
+            category: selectedOne,
+            score: score,
+            description: description
+        };
+
+        for (x in movie) {
+            console.log(movie[x]);
+        }
+        
+        return movie;
+    }
 });
