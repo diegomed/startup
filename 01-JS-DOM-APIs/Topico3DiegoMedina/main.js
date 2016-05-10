@@ -11,8 +11,8 @@ var server = http.createServer(function (request, response) {
 				var toObj = params[x].split('=');
 				queryObj[toObj[0]] = toObj[1];
 			}
-			var movies = searchMovies(queryObj, 'tarantino');
-			response.end(movies);
+			var movies = searchMovies(jsonObj, queryObj.title);//debo ingresarle un array de obj pelicula que obtengo de algun lado
+			response.end(JSON.stringify(movies));
 			/*for (x in queryObj) {
 				console.log(queryObj[x]);
 			}*/
@@ -25,13 +25,21 @@ var server = http.createServer(function (request, response) {
 
 server.listen(8081);
 
-function searchMovies(JSON,query) {
+var jsonObj = [
+   {title: 'peli1', year: '2015', director: 'tarantino', actors: 'jackson'},
+   {title: 'peli2', year: '2014', director: 'george', actors: 'samuel'},
+   {title: 'peli3', year: '2016', director: 'quentin', actors: 'larson'},
+];
+
+function searchMovies(obj,query) {
     var resultado = new Array();
-    for (x in JSON) {
-        if ((JSON[x].title.search(query) != -1) || (JSON[x].director.search(query) != -1) || (JSON[x].actors.search(query) != -1)) {
-            resultado.push(JSON[x]);
+    for (x in obj) {
+    	//console.log(obj[x]);
+        if ((obj[x].title.search(query) != -1) || (obj[x].director.search(query) != -1) || (obj[x].actors.search(query) != -1)) {
+            resultado.push(obj[x]);
         }
     }
+    console.log(resultado);
     return resultado;
 }
 // Console will print the message
