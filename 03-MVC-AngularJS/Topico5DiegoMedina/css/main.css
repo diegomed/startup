@@ -1,0 +1,21 @@
+header {
+  background-color: pink;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+section {
+  background-color: lightgreen;
+  text-align: center;
+  display: inline-block;
+  height: 400px;
+  width: 100%;
+}
+
+footer {
+  background-color: pink;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
