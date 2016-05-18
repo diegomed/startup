@@ -1,0 +1,1 @@
+myApp.controlller('altaCtrl', ['$scope', function ($scope) {}]);

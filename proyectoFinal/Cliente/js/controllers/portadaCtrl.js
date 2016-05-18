@@ -1,0 +1,1 @@
+myApp.controlller('portadaCtrl', ['$scope', function ($scope) {}]);
