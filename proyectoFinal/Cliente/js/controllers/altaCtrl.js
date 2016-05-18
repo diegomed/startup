@@ -1,1 +1,1 @@
-myApp.controlller('altaCtrl', ['$scope', function ($scope) {}]);
+myApp.controller('altaCtrl', ['$scope', function ($scope) {}]);

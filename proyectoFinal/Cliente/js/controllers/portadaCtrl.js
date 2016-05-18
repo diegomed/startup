@@ -1,1 +1,1 @@
-myApp.controlller('portadaCtrl', ['$scope', function ($scope) {}]);
+myApp.controller('portadaCtrl', ['$scope', function ($scope) {}]);

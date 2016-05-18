@@ -1,4 +1,4 @@
-<section>
+<section class="sectionEstrenos">
   <div class="buscador">
     <div class="selector">
       <div>Todas</div>
@@ -16,8 +16,12 @@
       </form>
     </div>
   </div>
-  <div class="portadas">
-    <div><img src="1.portada.png" width="100%"><p>Nombre
+  <div class="portadas" ng-controller="estrenosCtrl">
+    <div ng-repeat="estreno in estrenos">
+      <img ng-src="{{ estreno.Poster }}" width="100%">
+      <p>{{ estreno.Title }}</p>
+    </div>
+    <!--<div><img src="1.portada.png" width="100%"><p>Nombre
       Genero
       Descripcion</p></div>
     <div><img src="1.portada.png" width="100%"><p>Nombre
@@ -52,6 +56,6 @@
       Descripcion</p></div>
     <div><img src="1.portada.png" width="100%"><p>Nombre
       Genero
-      Descripcion</p></div>
+      Descripcion</p></div>-->
   </div>
 </section>

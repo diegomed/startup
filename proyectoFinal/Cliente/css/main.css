@@ -29,7 +29,7 @@ header div:hover {
   /*border: 1px solid black;*/
   margin: 44px 100px;
 }
-section {
+.sectionPortada {
   background-color: white;
   height: 500px;
   width: 100%;
@@ -38,7 +38,26 @@ section {
   margin: auto;
   display: inline-block;
 }
-section div {
+.sectionEstrenos {
+  background-color: white;
+  height: 500px;
+  width: 100%;
+  padding: 0px;
+  border: 0px;
+  margin: auto;
+  display: inline-block;
+}
+.sectionFicha {
+  background-color: white;
+  height: 500px;
+  width: 100%;
+  padding: 0px;
+  border: 0px;
+  margin: auto;
+  display: inline-block;
+  overflow: auto;
+}
+.sectionPortada div {
   float: left;
   background-color: lightblue;
   height: 250px;
@@ -46,6 +65,75 @@ section div {
   padding: 0px;
   border: 1px solid black;
   margin: 50px 35px;
+}
+.sectionFicha div {
+
+}
+.buscador {
+  overflow: auto;
+  margin-top: 10px;
+  padding: 10px;
+}
+.selector {
+  float: left;
+  border: 1px solid black;
+  margin-left: 90px;
+}
+.selector div {
+  float: left;
+  padding: 2px;
+  background-color: pink;
+}
+.selector div:hover {
+  background-color: grey;
+}
+.filtro {
+  float: right;
+  margin-right: 150px;
+}
+.portadas {
+  width: 100%;
+  height: 88%;
+  margin-top: 1px;
+}
+.portadas div {
+  border: 1px solid black;
+  background-color: lightblue;
+  width: 130px;
+  height: 190px;
+  float: left;
+  margin: 10px
+}
+.info {
+  width: 60%;
+  height: 92%;
+  float: left;
+  margin: 1px;
+  padding: 20px;
+}
+.titleMov {
+  text-align: left;
+}
+.descripcion {
+  overflow: auto;
+}
+.trailer {
+  height: 44%;
+}
+.video {
+  margin-top: 2%;
+  float: left;
+}
+img {
+  float: left;
+}
+.cover {
+  width: 35%;
+  height: 100%;
+  float: left;
+}
+.portada {
+  margin: 20% 10%;
 }
 .banners {
   height: 300px;
@@ -56,6 +144,61 @@ section div {
 }
 .paragraph {
   clear: left;
+}
+.alta {
+  background-color: lightgreen;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  position: fixed;
+  z-index: 1;
+}
+.opaco {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+.input {
+  display: block;
+  float: left;
+  margin: 10px 0px;
+  height: 120px;
+  width: 100%;
+  border: none;
+  background-color: lightgreen;
+}
+.headerAlta {
+  background-color: lightblue;
+  float: left;
+  width: 100%;
+  height: 50px;
+}
+.sectionAlta {
+  background-color: lightgreen;
+}
+.inputLeft {
+  margin: 30px 20px;
+  height: 50%;
+  width: 43%;
+  float: left;
+  border: none;
+  background-color: lightgreen;
+}
+.inputRight {
+  margin: 30px 20px;
+  height: 50%;
+  width: 43%;
+  float: right;
+  border: none;
+  background-color: lightgreen;
+}
+button {
+  float: right;
+  margin: 0px 20px;
 }
 footer {
   background-color: blue;

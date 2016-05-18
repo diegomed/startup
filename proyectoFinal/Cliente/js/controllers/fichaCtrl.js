@@ -1,1 +1,1 @@
-myApp.controlller('fichaCtrl', ['$scope', function ($scope) {}]);
+myApp.controller('fichaCtrl', ['$scope', function ($scope) {}]);

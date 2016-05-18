@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 	<head>
 		<title>portada</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,11 @@
 		<header>
 		  <p>header</p>
 		  <nav class="headerNav">
-		    <div class="divHome">home</div>
-		    <div class="divMovies">movies</div>
-		    <div class="divHelp">help</div>
-		    <div class="divAboutUs">about us</div>
-		    <div class="divContact">contact</div>
+		    <div class="divHome"><a href="#/portada">home</a></div>
+		    <div class="divMovies"><a href="#/estrenos">movies</a></div>
+		    <div class="divHelp"><a href="#/ficha">help</a></div>
+		    <div class="divAboutUs"><a href="#/alta">about us</a></div>
+		    <div class="divContact"><a>contact</a></div>
 		  </nav>
 		</header>
 		<div ng-view></div>
