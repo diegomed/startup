@@ -17,9 +17,9 @@
     </div>
   </div>
   <div class="portadas" ng-controller="estrenosCtrl">
-    <div ng-repeat="estreno in estrenos">
-      <img ng-src="{{ estreno.Poster }}" width="100%">
-      <p>{{ estreno.Title }}</p>
+    <div ng-repeat="peli in pelis">
+      <img ng-src="{{ peli.Poster }}" width="100%">
+      <p>{{ peli.Title }}</p>
     </div>
     <!--<div><img src="1.portada.png" width="100%"><p>Nombre
       Genero
