@@ -1,63 +1,54 @@
-var http = require('http');
-var url = require('url');
 var express = require('express');
+var url = require('url');
 var app = express();
 
 app.use(express.static('../Cliente'));
-/* intente con esto pero la conecion cliente servidor aun no funciono
-app.use(function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', "*");
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-	res.header('Access-Control-Allow-Headers', 'Content-Type');
-	next();
-});*/
 
-app.listen(process.env.PORT || 3000, function () {
-	console.log('server running at port 3000');
-});
-
-var server = http.createServer(function (request, response) {
-	if (request.method == 'GET') {
-		var parsed = url.parse(request.url);
-		if (parsed.pathname.search('/movies') != -1) {
-			if (parsed.query) {
-				if (parsed.query.search('&') != -1) {
-					var params = parsed.query.split('&');
-				}
-				else {
-					var params = new Array(parsed.query);
-				}
-				var queryObj = new Array(); //convierto el query en un objeto
-				for (x in params) {
-					var toObj = params[x].split('=');
-					queryObj[toObj[0]] = toObj[1];
-				}
-				//console.log(queryObj.Title);
-				if (queryObj.Func == 'searchmov') {
-					var movies = searchMovies(jsonObj, queryObj.Title);//debo ingresarle un array de obj pelicula que obtengo de algun lado
-					response.end(JSON.stringify(movies));
-				}
-				else if (queryObj.Func == 'filter') {
-					var movies = filter(jsonObj, queryObj.Filter);
-					response.end(JSON.stringify(movies));
-				}
-				/*for (x in queryObj) {
-					console.log(queryObj[x]);
-				}*/
-			}
-			else {
-				response.end('no se le paso ningun query');
-			}
-		}
-		else {
-			response.end('no estamos en el pathname movies');
-		}
+app.get('/movies', function (req, res) {
+   console.log("Got a GET request for the homepage");
+   var queryObj = queryToObj(req.url);
+   if (queryObj.Func == 'searchmov') {
+		var movies = searchMovies(jsonObj, queryObj.Title);//debo ingresarle un array de obj pelicula que obtengo de algun lado
+		res.end(JSON.stringify(movies));
+	}
+	else if (queryObj.Func == 'filter') {
+		var movies = filter(jsonObj, queryObj.Filter);
+		res.end(JSON.stringify(movies));
+	}
+	else if (queryObj == 'err') {
+		res.end('noQuery');
 	}
 });
 
-server.listen(3000);
+var server = app.listen(8081, function () {
 
-//console.log(jsonObj);
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log("Example app listening at http://%s:%s", host, port)
+
+});
+
+function queryToObj(query) {
+	var parsed = url.parse(query);
+	if (parsed.query) {
+		if (parsed.query.search('&') != -1) {
+			var params = parsed.query.split('&');
+		}
+		else {
+			var params = new Array(parsed.query);
+		}
+		var queryObj = new Array(); //convierto el query en un objeto
+		for (x in params) {
+			var toObj = params[x].split('=');
+			queryObj[toObj[0]] = toObj[1];
+		}
+		return queryObj;
+	}
+	else {
+		return 'err';
+	}
+}
 
 function searchMovies(obj,query) {
     var resultado = new Array();
