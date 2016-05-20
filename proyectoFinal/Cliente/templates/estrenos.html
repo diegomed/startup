@@ -20,7 +20,7 @@
   <div class="portadas">
     <div ng-repeat="peli in pelis">
       <img ng-src="{{ peli.Poster }}" width="100%">
-      <p>{{ peli.Title }}</p>
+      <p  ng-click="searchByID(peli.imdbID)"><a href="#/ficha">{{ peli.Title }}</a></p>
     </div>
   </div>
 </section>

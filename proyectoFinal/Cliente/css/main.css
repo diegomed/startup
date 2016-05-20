@@ -46,6 +46,7 @@ header div:hover {
   border: 0px;
   margin: auto;
   display: inline-block;
+  overflow: auto;
 }
 .sectionFicha {
   background-color: white;

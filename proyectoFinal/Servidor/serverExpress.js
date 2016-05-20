@@ -23,6 +23,10 @@ app.get('/movies', function (req, res) {
 		var movies = lastMovies(jsonObj,3); //creo que no se esta comportando como deberia
 		res.end(JSON.stringify(movies));
 	}
+	else if (queryObj.Func = 'id') {
+		var movies = searchByID(jsonObj, queryObj.id);
+		res.end(JSON.stringify(movies));
+	}
 	else if (queryObj == 'err') {
 		res.end('noQuery');
 	}
@@ -71,7 +75,7 @@ function searchMovies(obj,query) {
 }
 
 function filter(obj,filtro) {
-	var sorted = obj;
+	var sorted = obj.slice(0); //esto es para no modificar el objeto original
     if (filtro == 'all') {
         return sorted;
     }
@@ -106,6 +110,18 @@ function lastMovies(obj,n) {
     obj.sort(function(a, b){return Number(b.year)-Number(a.year)});
     var lastReleases = obj.slice(0,n);
     return lastReleases;
+}
+
+function searchByID(obj,query) {
+    var resultado = new Array();
+    for (x in obj) {
+    	//console.log(obj[x]);
+        if (obj[x].imdbID.search(query) != -1) {
+            resultado.push(obj[x]);
+        }
+    }
+    //console.log(resultado);
+    return resultado;
 }
 
 var jsonObj =
