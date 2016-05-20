@@ -8,11 +8,19 @@ app.get('/movies', function (req, res) {
    console.log("Got a GET request for the homepage");
    var queryObj = queryToObj(req.url);
    if (queryObj.Func == 'searchmov') {
-		var movies = searchMovies(jsonObj, queryObj.Title);//debo ingresarle un array de obj pelicula que obtengo de algun lado
+		var movies = searchMovies(jsonObj, queryObj.Search);
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj.Func == 'filter') {
 		var movies = filter(jsonObj, queryObj.Filter);
+		res.end(JSON.stringify(movies));
+	}
+	else if (queryObj.Func == 'genre') {
+		var movies = movieGenres(jsonObj); //no funciona correctamente, ademas su resultado no me es de utilidad
+		res.end(JSON.stringify(movies));
+	}
+	else if (queryObj.Func == 'lastmov') {
+		var movies = lastMovies(jsonObj,3); //creo que no se esta comportando como deberia
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj == 'err') {
@@ -63,18 +71,41 @@ function searchMovies(obj,query) {
 }
 
 function filter(obj,filtro) {
+	var sorted = obj;
     if (filtro == 'all') {
-        return obj;
+        return sorted;
     }
     else if (filtro == 'recent') {
-        return obj.sort(function(a, b){return Number(b.Year)-Number(a.Year)}); // ordeno por año de estreno
+        return sorted.sort(function(a, b){return Number(b.Year)-Number(a.Year)}); // ordeno por año de estreno
     }
     else if (filtro == 'popular') {
-        return obj.sort(function(a, b){return Number(b.imdbRating)-Number(a.imdbRating)}); // ordeno por rating
+        return sorted.sort(function(a, b){return Number(b.imdbRating)-Number(a.imdbRating)}); // ordeno por rating
     }
     else {
         return -1;
     }
+}
+
+function movieGenres(obj) {
+    var genres = new Array(obj[0].Genre);
+    for (x in obj) { // para cada elemento de obj
+        for (y in genres) { // verifico si su genero ya esta en genres
+            if (genres[y] == obj[x].Genre) {
+                genres.splice(y,1,obj[x].Genre); // si esta, lo sobre-escribo por uno identico
+                break;
+            }
+        }
+        if ((y == genres.length-1) && (genres[y] != obj[x].Genre)) { // (si se recorrio todo el array genres (sin llegar a break)) && (el elemento a sobre-escribir no era el ultimo)
+            genres.splice(y,0,obj[x].Genre); // lo agrego
+        }
+    }
+    return genres;
+}
+
+function lastMovies(obj,n) {
+    obj.sort(function(a, b){return Number(b.year)-Number(a.year)});
+    var lastReleases = obj.slice(0,n);
+    return lastReleases;
 }
 
 var jsonObj =

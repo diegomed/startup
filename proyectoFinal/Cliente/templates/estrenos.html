@@ -1,13 +1,14 @@
-<section class="sectionEstrenos">
+<section class="sectionEstrenos" ng-controller="estrenosCtrl">
   <div class="buscador">
     <div class="selector">
-      <div>Todas</div>
-      <div>Populares</div>
-      <div>Recientes</div>
+      <div ng-click="sendRequest('movies?Func=filter&Filter=all')">Todas</div>
+      <div ng-click="sendRequest('movies?Func=filter&Filter=popular')">Populares</div>
+      <div ng-click="sendRequest('movies?Func=filter&Filter=recent')">Recientes</div>
     </div>
     <div class="filtro">
-      <form>
-        <input type="text" value="title, actor or description">
+      <form id="estrenosForm">
+        <button type="button" ng-click="searchMov()">search</button>
+        <input type="text" ng-model="search" value="title, actor or description">
         <select name="type">
           <option value="horror">horror</option>
           <option value="comedy">comedy</option>
@@ -16,46 +17,10 @@
       </form>
     </div>
   </div>
-  <div class="portadas" ng-controller="estrenosCtrl">
+  <div class="portadas">
     <div ng-repeat="peli in pelis">
       <img ng-src="{{ peli.Poster }}" width="100%">
       <p>{{ peli.Title }}</p>
     </div>
-    <!--<div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>
-    <div><img src="1.portada.png" width="100%"><p>Nombre
-      Genero
-      Descripcion</p></div>-->
   </div>
 </section>
