@@ -23,8 +23,13 @@ app.get('/movies', function (req, res) {
 		var movies = lastMovies(jsonObj,3); //creo que no se esta comportando como deberia
 		res.end(JSON.stringify(movies));
 	}
-	else if (queryObj.Func = 'id') {
+	else if (queryObj.Func == 'id') {
 		var movies = searchByID(jsonObj, queryObj.id);
+		res.end(JSON.stringify(movies));
+	}
+	else if (queryObj.Func == 'searchgen') {
+		console.log('entre a searchgen');
+		var movies = searchByGenre(jsonObj, queryObj.Genre);
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj == 'err') {
@@ -121,6 +126,18 @@ function searchByID(obj,query) {
         }
     }
     //console.log(resultado);
+    return resultado;
+}
+
+function searchByGenre(obj,query) {
+    var resultado = new Array();
+    for (x in obj) {
+    	//console.log(obj[x]);
+        if (obj[x].Genre.search(query) != -1) {
+            resultado.push(obj[x]);
+        }
+    }
+    console.log(resultado);
     return resultado;
 }
 
