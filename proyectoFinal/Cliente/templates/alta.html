@@ -1,37 +1,46 @@
 <div class="opaco">
-	<div class="alta">
+	<div class="alta" ng-controller="altaCtrl">
 		<header class="headerAlta">
 		  <h2>Nueva pelicula</h2>
 		</header>
 		<section class="sectionAlta">
-			<form id="myForm">
+			<form id="myForm" method="post" action="/alta">
 				<div class="input">
 					<div class="inputLeft">
-						Titulo: <input type="text">
+						Titulo: <input type="text" name="title">
 					</div>
 					<div class="inputRight">
-						Fecha de estreno: <input type="date">
+						Fecha de estreno: <input type="date" name="date">
 					</div>
 				</div>
 				<div class="input">
 					<div class="inputLeft">
 						categoria: 
-						<select>
-						    <option value="comedy">comedy</option>
-						    <option value="drama">drama</option>
-						    <option value="horror">horror</option>
+						<select name="genre">
+				          <option value="History">History</option>
+				          <option value="Action">Action</option>
+				          <option value="Drama">Drama</option>
+				          <option value="Biography">Biography</option>
+				          <option value="Animation">Animation</option>
+				          <option value="Adventure">Adventure</option>
+				          <option value="Comedy">Comedy</option>
+				          <option value="War">War</option>
+				          <option value="Fantasy">Fantasy</option>
+				          <option value="Romance">Romance</option>
+				          <option value="Sci-Fi">Sci-Fi</option>
+				          <option value="Crime">Crime</option>
 						</select>
 					</div>
 					<div class="inputRight">
-						puntaje: <input type="range" min="0" max="5" value="0">
+						puntaje: <input type="range" min="0" max="5" value="0" name="score">
 					</div>
 				</div>
 				<div class="input">
 					Descripcion: <br>
 					<textarea name="description" rows="5" cols="50"></textarea>
 				</div>
-				<button type="submit">ok</button>
-				<button type="reset">cancel</button>
+				<button type="submit" value="submit">ok</button>
+				<button type="reset" value="reset">cancel</button>
 			</form>
 		</section>
 	</div>

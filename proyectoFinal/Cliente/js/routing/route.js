@@ -6,7 +6,7 @@ myApp.config(function ($routeProvider) {
 			templateUrl: 'templates/portada.html',
 			controller: 'portadaCtrl'
 		})
-		.when('/ficha', {
+		.when('/ficha/:imdbID', {
 			templateUrl: 'templates/fichaPelicula.html',
 			controller: 'fichaCtrl'
 		})
@@ -19,6 +19,6 @@ myApp.config(function ($routeProvider) {
 			controller: 'altaCtrl'
 		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/portada'
 		});
 });

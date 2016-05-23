@@ -1,8 +1,8 @@
-<section class="sectionPortada" ng-controller="portadaCtrl">
+<section class="sectionPortada">
 	<p>section</p>
 	<div ng-repeat="peli in pelis">
 		<img ng-src="{{ peli.Poster }}" width="100%">
-		<p>{{ peli.Title }}</p>
+		<a href="#/ficha/{{ peli.imdbID }}">{{ peli.Title }}</a>
 	</div>
 	<div class="banners">banners</div>
 	<div class="clear"></div>

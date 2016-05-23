@@ -1,1 +1,3 @@
-myApp.controller('altaCtrl', ['$scope', function ($scope) {}]);
+myApp.controller('altaCtrl', ['$scope','estrenos', function ($scope, estrenos) {
+	
+}]);

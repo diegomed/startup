@@ -1,8 +1,11 @@
 var express = require('express');
 var url = require('url');
+var bodyParser = require('body-parser');
 var app = express();
 
 app.use(express.static('../Cliente'));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/movies', function (req, res) {
    console.log("Got a GET request for the homepage");
@@ -16,11 +19,11 @@ app.get('/movies', function (req, res) {
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj.Func == 'genre') {
-		var movies = movieGenres(jsonObj); //no funciona correctamente, ademas su resultado no me es de utilidad
+		var movies = movieGenres(jsonObj); //no funciona correctamente, esta pensada para genres: genero, no para genres: genero1, genero2, etc
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj.Func == 'lastmov') {
-		var movies = lastMovies(jsonObj,3); //creo que no se esta comportando como deberia
+		var movies = lastMovies(jsonObj,3); //creo que no se esta comportando como deberia --> ya se comporta bien
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj.Func == 'id') {
@@ -28,13 +31,27 @@ app.get('/movies', function (req, res) {
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj.Func == 'searchgen') {
-		console.log('entre a searchgen');
 		var movies = searchByGenre(jsonObj, queryObj.Genre);
 		res.end(JSON.stringify(movies));
 	}
 	else if (queryObj == 'err') {
 		res.end('noQuery');
 	}
+	else {
+		res.end('enter a valid query');
+	}
+});
+
+app.post('/alta', function(req, res){
+    var movie = {
+        Title: req.body.title,
+        Released: req.body.date,
+        Genre: req.body.genre,
+        imdbRating: req.body.score,
+        Plot: req.body.description
+    };
+    jsonObj.push(movie);
+    res.redirect('/#/portada');
 });
 
 var server = app.listen(8081, function () {
@@ -68,10 +85,13 @@ function queryToObj(query) {
 }
 
 function searchMovies(obj,query) {
+	var str = query.replace(/%20/g, " ");
     var resultado = new Array();
     for (x in obj) {
-    	//console.log(obj[x]);
-        if ((obj[x].Title.search(query) != -1) || (obj[x].Director.search(query) != -1) || (obj[x].Actors.search(query) != -1)) {
+    	var title = obj[x].Title.toLowerCase();
+    	var director = obj[x].Director.toLowerCase();
+    	var actors = obj[x].Actors.toLowerCase();
+        if ((title.search(str) != -1) || (director.search(str) != -1) || (actors.search(str) != -1)) {
             resultado.push(obj[x]);
         }
     }
@@ -112,8 +132,9 @@ function movieGenres(obj) {
 }
 
 function lastMovies(obj,n) {
-    obj.sort(function(a, b){return Number(b.year)-Number(a.year)});
-    var lastReleases = obj.slice(0,n);
+	var sorted = obj.slice(0);
+    sorted.sort(function(a, b){return Number(b.Year)-Number(a.Year)});
+    var lastReleases = sorted.slice(0,n);
     return lastReleases;
 }
 
@@ -121,7 +142,7 @@ function searchByID(obj,query) {
     var resultado = new Array();
     for (x in obj) {
     	//console.log(obj[x]);
-        if (obj[x].imdbID.search(query) != -1) {
+        if (obj[x].imdbID == query) {
             resultado.push(obj[x]);
         }
     }
@@ -137,7 +158,6 @@ function searchByGenre(obj,query) {
             resultado.push(obj[x]);
         }
     }
-    console.log(resultado);
     return resultado;
 }
 

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 	<head>
-		<title>portada</title>
+		<title>proyecto final</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	</head>
-	<body>
+	<body ng-controller="portadaCtrl">
 		<header>
 		  <p>header</p>
 		  <nav class="headerNav">
 		    <div class="divHome"><a href="#/portada">home</a></div>
 		    <div class="divMovies"><a href="#/estrenos">movies</a></div>
-		    <div class="divHelp"><a href="#/ficha">help</a></div>
-		    <div class="divAboutUs"><a href="#/alta">about us</a></div>
-		    <div class="divContact"><a>contact</a></div>
+		    <div class="divAlta"><a href="#/alta">alta</a></div>
+		    <div class="divHelp">help</div>
+		    <div class="divAboutUs">about us</div>
+		    <div class="divContact">contact</div>
 		  </nav>
 		</header>
 		<div ng-view></div>
