@@ -128,7 +128,24 @@ function movieGenres(obj) {
             genres.splice(y,0,obj[x].Genre); // lo agrego
         }
     }
-    return genres;
+    var out = new Array();
+	for(i in genres) {
+		var intermediate = genres[i].replace(/, /g,',');
+		out = out.concat(intermediate.split(','));
+	}
+    var output = new Array(out[0]);
+    for (x in out) { // para cada elemento de obj
+        for (y in output) { // verifico si su genero ya esta en output
+            if (output[y] == out[x]) {
+                output.splice(y,1,out[x]); // si esta, lo sobre-escribo por uno identico
+                break;
+            }
+        }
+        if ((y == output.length-1) && (output[y] != out[x])) { // (si se recorrio todo el array output (sin llegar a break)) && (el elemento a sobre-escribir no era el ultimo)
+            output.splice(y,0,out[x]); // lo agrego
+        }
+    }	
+    return output;
 }
 
 function lastMovies(obj,n) {

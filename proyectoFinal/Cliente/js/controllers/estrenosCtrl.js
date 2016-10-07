@@ -3,6 +3,12 @@ myApp.controller('estrenosCtrl', ['$scope', 'estrenos', function ($scope, estren
 		.success(function(data) {
 			$scope.pelis = data;
 		});
+
+	estrenos.get('movies?Func=genre')
+		.success(function(data) {
+			$scope.genres = data;
+		});	
+
 	$scope.sendRequest = function(url) {
 		estrenos.get(url)
 			.success(function(data) {

@@ -10,18 +10,7 @@
         <button type="button" ng-click="searchMov()">search</button>
         <input type="text" ng-model="search" value="title, actor or description">
         <select name="type"  ng-click="searchByGenre()">
-          <option value="History">History</option>
-          <option value="Action">Action</option>
-          <option value="Drama">Drama</option>
-          <option value="Biography">Biography</option>
-          <option value="Animation">Animation</option>
-          <option value="Adventure">Adventure</option>
-          <option value="Comedy">Comedy</option>
-          <option value="War">War</option>
-          <option value="Fantasy">Fantasy</option>
-          <option value="Romance">Romance</option>
-          <option value="Sci-Fi">Sci-Fi</option>
-          <option value="Crime">Crime</option>
+          <option ng-repeat="genre in genres" value="{{ genre }}">{{ genre }}</option>
         </select>
       </form>
     </div>
